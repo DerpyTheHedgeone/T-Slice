@@ -29,13 +29,14 @@ jobs:
             artifactName: P-Slice.1.0.linux
             cachePath: cache-build-linux
             artifactPath: export/release/linux/bin/*
-          # - name: macOS x86_64
-          #   os: macos-14
-          #   buildArgs: "mac -64 -D HXCPP_M64"
-          #   exportPath: macos
-          #   setupScript: sh ./setup/mobile.sh
-          #   artifactName: P-Slice.1.0.macosx64
-          #   artifactPath: export/release/macos/bin/*
+          - name: macOS x86_64
+            os: macos-14
+            buildArgs: "mac -64 -D HXCPP_M64"
+            cachePath: cache-build-macos_m64
+            exportPath: macos
+            setupScript: sh ./setup/mobile.sh
+            artifactName: P-Slice.1.0.macosx64
+            artifactPath: export/release/macos/bin/*
           - name: macOS AArch64
             os: macos-15
             buildArgs: mac
@@ -68,12 +69,12 @@ jobs:
             artifactName: P-Slice.1.0.android
             cachePath: cache-build-android
             artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
-          - name: Android
+          - name: Android-profiled
             os: macos-15
             exportPath: android
             buildArgs: "android -DPROFILE_BUILD"
             setupScript: sh ./setup/mobile.sh
-            artifactName: P-Slice.1.0.android
+            artifactName: P-Slice.1.0.android-audited
             cachePath: cache-build-android-profile
             artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
           - name: iOS
